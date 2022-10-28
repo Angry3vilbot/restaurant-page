@@ -4,7 +4,16 @@ export default function createContent(){
     const navs = document.createElement('div')
     const reviews = document.createElement('div')
     const reviewHeader = document.createElement('h1')
+    const workHours = document.createElement('div')
+    const workHoursHeader = document.createElement('h1')
+    const location = document.createElement('div')
+    const locationHeader = document.createElement('h1')
+    const footer = document.createElement('footer')
+        
     reviews.id = 'reviews'
+    workHours.id = 'work-hours-container'
+    location.id = 'location'
+
     let pValueArray = [`<a onclick="console.log('aaaaa')">Home</a>`, 
     `<a onclick="console.log('bbbb')">Our Menu</a>`, `<a onclick="console.log('c')">About</a>`]
     let p = 0
@@ -16,6 +25,13 @@ export default function createContent(){
     let reviewArray = ['"Quite splendidly done, however there is not enough LAMB SAUCE!"', `"May the 4th be with this fine 
     restaurant."`, '"Tasty food and a friendly atmosphere!"', '"I created this, so it must be fantastic."']
     let r = 0
+    let dayOfWeekArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    let dow = 0
+    let timeArray = ["10 AM - 7 PM", "9 AM - 7 PM", "9 AM - 7 PM", "9 AM - 7 PM", "8 AM - 8 PM", "8 AM - 9 PM"]
+    let time = 0
+    let footerArray = ["Copyright Restaurant©", "Made by Angry3vilbot"]
+    let f = 0
+
     navs.append(document.createElement('p'), document.createElement('p'), document.createElement('p'))
     navs.childNodes.forEach(
         function(child){
@@ -47,6 +63,34 @@ export default function createContent(){
     })
     reviewHeader.innerHTML = 'Reviews'
     reviewHeader.setAttribute('style', 'width: 100%; text-align: center; font-size:48px;')
-    document.body.append(reviewHeader, reviews)
+    workHours.append(document.createElement('div'), document.createElement('div'), document.createElement('div'), 
+    document.createElement('div'), document.createElement('div'), document.createElement('div'))
+    workHours.querySelectorAll('div').forEach(function(item){
+        item.innerHTML = '<h2></h2><p></p>'
+        item.classList.add('work-hours')
+    })
+    workHours.querySelectorAll('h2').forEach(function(child){
+        child.innerHTML = dayOfWeekArray[dow]
+        dow++
+    })
+    workHours.querySelectorAll('p').forEach(function(child){
+        child.innerHTML = timeArray[time]
+        time++
+    })
+    workHoursHeader.innerHTML = 'Our Work Hours'
+    workHoursHeader.setAttribute('style', 'width: 100%; text-align: center; font-size:48px;')
+    location.append(document.createElement('div'))
+    location.querySelectorAll('div').forEach(function(item){
+        item.innerHTML = `123 Red Street, Blue Town, Green. There was originally supposed to be a Google Maps map here, however 
+        I need to make a Google API key for that, and I do not want to, not yet at least.`
+    })
+    locationHeader.innerHTML = 'Our Location'
+    locationHeader.setAttribute('style', 'width: 100%; text-align: center; font-size:48px;')
+    footer.append(document.createElement('p'), document.createElement('p'))
+    footer.querySelectorAll('p').forEach(function(item){
+        item.innerHTML = footerArray[f]
+        f++
+    })
+    document.body.append(reviewHeader, reviews, workHoursHeader, workHours, locationHeader, location, footer)
     return console.log('succ')
 }
