@@ -1,3 +1,4 @@
+import { loadMainPage, loadMenuPage, loadAboutPage } from "./index.js"
 export default function createContent(){
     const container = document.getElementById('content')
     const nav = document.createElement('nav')
@@ -14,8 +15,8 @@ export default function createContent(){
     workHours.id = 'work-hours-container'
     location.id = 'location'
 
-    let pValueArray = [`<a onclick="console.log('aaaaa')">Home</a>`, 
-    `<a onclick="console.log('bbbb')">Our Menu</a>`, `<a onclick="console.log('c')">About</a>`]
+    let pValueArray = [`<a onclick="">Home</a>`, 
+    `<a onclick="">Our Menu</a>`, `<a onclick="">About</a>`]
     let p = 0
     let authorArray = [`<a href='https://www.youtube.com/watch?v=uW6nkqUmnYU' target="_blank" rel="noopener noreferrer">Gordon Ramsay</a>`, 
     `<a href='https://www.youtube.com/watch?v=VGd6bqTpEAk' target="_blank" rel="noopener noreferrer">Obi-Wan Kenobi</a>`, 
@@ -31,11 +32,15 @@ export default function createContent(){
     let time = 0
     let footerArray = ["Copyright Restaurant©", "Made by Angry3vilbot"]
     let f = 0
+    let eve = 0
+    let eventListeners = [loadMainPage, loadMenuPage, loadAboutPage]
 
     navs.append(document.createElement('p'), document.createElement('p'), document.createElement('p'))
     navs.childNodes.forEach(
         function(child){
             child.innerHTML = pValueArray[p]
+            child.addEventListener('click', eventListeners[eve])
+            eve++
             p++
         }
     )
@@ -91,6 +96,7 @@ export default function createContent(){
         item.innerHTML = footerArray[f]
         f++
     })
+    document.title = "Restaurant | Main Page"
     document.body.append(reviewHeader, reviews, workHoursHeader, workHours, locationHeader, location, footer)
     return console.log('succ')
 }
