@@ -1,5 +1,6 @@
 import createMenuPage from './ourMenu.js';
 import createContent from './pageLoad.js';
+import createAboutPage from './aboutPage.js';
 let eve = 0
 let eventListeners = [loadMainPage, loadMenuPage, loadAboutPage]
 createContent()
@@ -42,6 +43,7 @@ function loadAboutPage(){
     document.body.innerHTML = "";
     //append it back
     document.body.appendChild(mainContainer);
+    createAboutPage()
 }
 let navbar = document.querySelector('nav')
 navbar.querySelectorAll('p').forEach(function(item){
