@@ -27,9 +27,13 @@ export default function createAboutPage(){
         item.innerHTML = footerArray[f]
         f++
     })
-    container.append(document.createElement('h1'))
+    container.append(document.createElement('h1'), document.createElement('div'))
     container.querySelector('h1').innerHTML = 'About'
     container.querySelector('h1').id = 'about-header'
+    container.querySelector('div').id = 'about-container'
+    container.querySelector('div').append(document.createElement('p'))
+    container.querySelector('p').innerHTML = `This is an example of a website, which is dynamically generated from different
+    JavaScript files using Webpack. Made during the course of learning JS using The Odin Project course`
     nav.append(document.createElement('h2'), navs)
     nav.firstChild.innerHTML = 'Restaurant'
     document.body.prepend(nav)
